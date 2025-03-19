@@ -1,42 +1,38 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const CartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState: {
-    items: [], // Initialize items as an empty array
+    items: [], // Initialize cart items
   },
   reducers: {
-    // ✅ Add item to cart
     addItem: (state, action) => {
       const { name, image, cost } = action.payload;
-      const existingItem = state.items.find(item => item.name === name);
+      const existingItem = state.items.find((item) => item.name === name);
       if (existingItem) {
-        existingItem.quantity++; // Increase quantity if item already exists
+        existingItem.quantity += 1; // Increase quantity if exists
       } else {
-        state.items.push({ name, image, cost, quantity: 1 }); // Add new item with quantity 1
+        state.items.push({ name, image, cost, quantity: 1 });
       }
     },
-
-    // ✅ Remove item from cart
     removeItem: (state, action) => {
-      state.items = state.items.filter(item => item.name !== action.payload); // Remove by name
+      state.items = state.items.filter((item) => item.name !== action.payload);
     },
-
-    // ✅ Update item quantity in cart
     updateQuantity: (state, action) => {
       const { name, quantity } = action.payload;
-      const itemToUpdate = state.items.find(item => item.name === name);
-      if (itemToUpdate) {
-        itemToUpdate.quantity = quantity; // Update quantity
+      const item = state.items.find((item) => item.name === name);
+      if (item) {
+        item.quantity = quantity;
       }
     },
   },
 });
 
-// ✅ Exporting actions for use in ProductList.jsx & CartItem.jsx
+// Export Redux actions
 export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
 
-// ✅ Exporting the reducer for store.js
+// Export Redux reducer
 export default CartSlice.reducer;
+
 
 
