@@ -1,12 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux'; // Import Redux Provider
-import store from './store'; // Import the Redux store
-import App from './App';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App"; // ✅ Remove .jsx extension
+import { Provider } from "react-redux";
+import store from "./store";
 
-// Create root and render the application with Redux store
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
