@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';  
+import { createSlice } from '@reduxjs/toolkit';
 
 export const CartSlice = createSlice({
   name: 'cart',
@@ -23,12 +23,12 @@ export const CartSlice = createSlice({
       if (item) {
         item.quantity = quantity;
       }
-    },git status
-
+    }, // ✅ Correctly closed updateQuantity function
   },
 });
 
-// ❌ Remove any duplicate `export const { addItem, ... }` if it appears elsewhere in the file
-export const { addItem, removeItem, updateQuantity } = CartSlice.actions;  // ✅ Export actions correctly
+// ✅ Correctly exporting actions
+export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
 
 export default CartSlice.reducer;
+
