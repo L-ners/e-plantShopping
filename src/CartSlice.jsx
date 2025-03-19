@@ -1,4 +1,4 @@
-import { addItem } from "./CartSlice"; 
+import { createSlice } from '@reduxjs/toolkit';  
 
 export const CartSlice = createSlice({
   name: 'cart',
@@ -23,13 +23,12 @@ export const CartSlice = createSlice({
       if (item) {
         item.quantity = quantity;
       }
-    },
+    },git status
+
   },
 });
 
-// Exporting the actions
-export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
+// ❌ Remove any duplicate `export const { addItem, ... }` if it appears elsewhere in the file
+export const { addItem, removeItem, updateQuantity } = CartSlice.actions;  // ✅ Export actions correctly
 
-// Exporting the reducer
 export default CartSlice.reducer;
-
